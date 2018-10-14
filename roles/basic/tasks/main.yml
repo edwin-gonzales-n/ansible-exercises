@@ -1,0 +1,10 @@
+- name: "Installing VIM"
+  yum: pkg=vim state=installed
+
+
+- name: "Installing DNS Utils"
+  yum: pkg=dnsutils state=installed
+
+
+- name: "Installing GIT"
+  yum: pkg=git state=installed
