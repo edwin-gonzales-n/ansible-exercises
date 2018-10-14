@@ -1,10 +1,16 @@
-- name: "Installing VIM"
-  yum: pkg=vim state=installed
+- name: "Installing additional software"
+  yum: pkg={{ item }} state=installed
+  with_items:
+        - bind-utils
+        - git
+        - vim
+        - ntp
+        - at
+        - lvm2
+        - zsh
 
+- name: "Adding bashrc"
+  copy: src=../files/.zshrc dest=/root/.zshrc owner=root group=root mode=0644
 
-- name: "Installing DNS Utils"
-  yum: pkg=bind-utils state=installed
-
-
-- name: "Installing GIT"
-  yum: pkg=git state=installed
+- name: "Installing oh-my-zsh"
+  shell: 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
