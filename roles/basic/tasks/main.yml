@@ -3,7 +3,7 @@
 
 
 - name: "Installing DNS Utils"
-  yum: pkg=dnsutils state=installed
+  yum: pkg=bind-utils state=installed
 
 
 - name: "Installing GIT"
