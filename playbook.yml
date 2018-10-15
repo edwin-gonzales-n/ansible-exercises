@@ -3,3 +3,6 @@
   roles: 
         - basic
 
+- hosts: webserver
+  roles:
+        - webserver

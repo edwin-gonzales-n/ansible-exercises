@@ -1,0 +1,7 @@
+- name: "Installing Webserver Software"
+  yum: name={{ item }}
+  with_items:
+        - httpd
+        - httpd-tools
+
+

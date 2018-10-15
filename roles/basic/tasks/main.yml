@@ -8,9 +8,26 @@
         - at
         - lvm2
         - zsh
+        - wget
+        - gcc
+        - java
+        - links
+        - httpd
 
 - name: "Adding bashrc"
   copy: src=../files/.zshrc dest=/root/.zshrc owner=root group=root mode=0644
 
 - name: "Installing oh-my-zsh"
   shell: 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
+
+- name: "upgrade all packages"
+  yum:
+    name: '*'
+    state: latest
+
+- name: "install the 'Development tools' package group"
+  yum:
+    name: "@Development tools"
+    state: present
+
+
