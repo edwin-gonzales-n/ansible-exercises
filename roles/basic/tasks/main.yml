@@ -14,12 +14,6 @@
         - links
         - httpd
 
-- name: "Adding bashrc"
-  copy: src=../files/.zshrc dest=/root/.zshrc owner=root group=root mode=0644
-
-- name: "Installing oh-my-zsh"
-  shell: 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
-
 - name: "upgrade all packages"
   yum:
     name: '*'
@@ -30,4 +24,21 @@
     name: "@Development tools"
     state: present
 
+- name: "installing epel-release"
+  yum:
+    name: "epel-release"
+    state: latest
+
+- name: "installing node.js"
+  yum:
+    name: "nodejs"
+    state: latest
+
+- name: "node version"
+  shell: 'node --version'
+
+- name: "installing npm"
+  yum:
+    name: "npm"
+    state: latest
 
